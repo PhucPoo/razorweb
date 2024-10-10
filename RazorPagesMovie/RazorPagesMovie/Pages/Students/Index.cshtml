@@ -1,0 +1,89 @@
+﻿@page "{searchString?}"
+@model RazorPagesMovie.Pages.Students.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<form>
+    <select asp-for="StudentGender" asp-items="Model.Genders">
+        <option value="">All</option>
+    </select>
+    <p>
+        <label>Title: <input type="text" asp-for="SearchString" /></label>
+        <input type="submit" value="Sreach" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].MSV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].Class)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].Birthday)
+            </th>
+            
+                @Html.DisplayNameFor(model => model.Student[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student[0].Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Student) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MSV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Class)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            
+             
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.MSV">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.MSV">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.MSV">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
